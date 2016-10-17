@@ -8,7 +8,7 @@ use project2\Http\Requests;
 
  class TagController extends Controller
 {
- public function index()
+ public function one()
     {
         //
         return view('oldindex');
