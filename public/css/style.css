@@ -1,0 +1,35 @@
+form#lorem{
+	border:thick black solid;
+	float: left;
+	width: 40%;
+	background-color: pink;
+	overflow: auto;
+	
+}
+
+form#user {
+	border:thick black solid;
+	float: right;
+	width: 40%;
+	overflow:auto;
+	background: aqua;
+}
+body#tools{
+	overflow: auto;
+}
+
+input{
+	float:right;
+}
+
+form label{
+	font-size: 2rem;
+}
+
+h2{
+	text-align: center;
+}
+form{
+	padding: 2em;
+	margin: 1em;
+}

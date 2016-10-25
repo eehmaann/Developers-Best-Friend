@@ -29,8 +29,9 @@ class TextController extends Controller
 		$number= $request->input('paragraphsNumber');
 		$generator = new \Badcow\LoremIpsum\Generator();
 		$paragraphs = $generator->getParagraphs($number);
-		echo implode('<p>', $paragraphs);
-    	return view('lorem');
+		//echo implode('<p>', $paragraphs);
+    	$lorem =implode('<br> BIRD LEAF ', $paragraphs);
+        return view('lorem')->with('lorem', $lorem);
     }
     public function users(Request $request)
     {
@@ -51,17 +52,19 @@ class TextController extends Controller
         $string="";
 
         for ($i=0; $i < $number; $i++) {
-            
-            $string .= $faker ->name($gender = null|'male'|'female');
-            $string .= "<br>";
-  			$string .=  $faker->name($gender = null|'male'|'female');
-            $string .= "\n";
-  			$string .=  $faker->email;
-            $string .= "\n"; 
+            $first =$faker->firstName($gender = null|'male'|'female');
+            $last= $faker ->lastname;
+            $company =$faker->company;
+            $email = $first.".".$last."@".$company.".com";
+            //$string .= $faker ->name($gender = null|'male'|'female');
+            $string .="<b> NAME </b>";
+            $string .=$first;
+            $string .="\n";
+            $string .=$last."\n<b>EMAIL:</b>".$email."\n <b>ADDRESS</b> \n";
   			$string .=  $faker->address;
-            $string .= "\n";
+            $string .= "\n <b> NUMBER </b> \n";
     		$string .=  $faker->phoneNumber;
-            $string .= "\n";
+            $string .= "\n TITLE \n";
     		$string .=  $faker->jobTitle;
             $string .="\r\n <br>";
             //
