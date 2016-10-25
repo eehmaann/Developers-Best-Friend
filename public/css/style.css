@@ -33,3 +33,15 @@ form{
 	padding: 2em;
 	margin: 1em;
 }
+.birdleaf{
+	margin: 2em;
+	-webkit-box-shadow: 4px -4px 121px 0px rgba(0,0,0,0.81);
+-moz-box-shadow: 4px -4px 121px 0px rgba(0,0,0,0.81);
+box-shadow: 4px -4px 121px 0px rgba(0,0,0,0.81);
+}
+
+.highlight{
+	border:thin black solid;
+	background-color: tan;
+	width:100%;
+}
