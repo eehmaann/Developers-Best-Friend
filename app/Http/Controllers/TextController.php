@@ -59,23 +59,67 @@ class TextController extends Controller
         
     	$faker = Faker::create();
         $string="";
+        $address=$request->input('address');
+        $phone=$request->input('phone');
+        $position=$request->input('position');
+        $age=$request->input('age');
         $leaf = $request->input('leaf');
         $highlight= $request->input('highlight');
 
         for ($i=0; $i < $number; $i++) {
             $first =$faker->firstName($gender = null|'male'|'female');
             $last= $faker ->lastname;
+            $person="<b> NAME: </b> \n ".$first."\n".$last."\n\n";
             if($leaf=="yes"){
                 $company="Birdleaf";
             }
-            else{
+            else if($position=="yes"){
                 $company =$faker->company;
+                $person.="<b>COMPANY </b> \n\n".$company;
+            }
+            else{
+                $company="AOL";
+            }
+            $spacespot= strpos($company, " ");
+            if($spacespot){
+                $company=substr($company,0,$spacespot);
             }
             $email = $first.".".$last."@".$company.".com";
-            $person="<b> NAME </b> \n".$first."\n".$last."\n";
-            $person.="<b>EMAIL:</b>".$email."\n <b>ADDRESS</b> \n".$faker->address;
-            $person.= "\n <b> NUMBER: </b> \n".$faker->phoneNumber;
-            $person.= "\n <b>TITLE:</b> \n".$faker->jobTitle;
+            
+            $person.="<b>EMAIL:</b>  ".$email."\n\n <b>ADDRESS:  </b> \n".$faker->address;
+            if($phone=="yes"){
+                $person.= "\n\n <b> NUMBER:  </b> \n".$faker->phoneNumber;
+            }
+            if($position=="yes"){
+              $person.= "\n\n <b>TITLE:  </b> \n".$faker->jobTitle;  
+            }
+            if($age=="yes"){
+                
+                   // $birthdate=$faker->date($format = 'y-m-d', $min = '-80 years', $max ='-18 years'); 
+                $month =$faker->numberBetween($min = '1', $min ='12'); 
+                // Get the day user was born
+                if($month=="4" || $month=="6" ||$month=="9" ||$month=="11"){
+                    $day = $faker->numberBetween($min = '1', $min ='30');
+                } 
+                else if($month="2"){
+                    $day = $faker->numberBetween($min = '1', $min ='28');
+                }
+                else {
+                    $day = $faker->numberBetween($min = '1', $min ='31');
+                }
+                
+                // Get the year user was born, must be legal age to work
+                if($leaf=="yes" || $position=="yes"){
+                    $year = $faker->numberBetween($min = '1936', $min ='1998'); 
+                }
+                // user can be between 6 and 101
+                else{
+                    $year = $faker->numberBetween($min = '1915', $min ='2010'); 
+                }
+                $person.="<b> DATE OF BIRTH: </b>\n\n".$month."-".$day."-".$year;
+            }
+            
+            // Changes the format of diasplay so that ever other entry is highlighted.
             if($i%2==0 && $highlight=="yes"){ 
             $string .="<span class='highlight'>".$person."</span>\r\n <br>";
             }
@@ -84,9 +128,9 @@ class TextController extends Controller
             }
             //
         }
-           
+        // leaf will add a visual cue to show to be identifiably different, beyond just text
         if($leaf=="yes"){
-            $string="<div class='birdleaf'>".$string."</div>";
+            $string="<div class='birdleaf'> <h3>Employees of Bird Leaf</h3>".$string."</div>";
         }
     	return view ('users')->with('string', $string);
     }

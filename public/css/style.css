@@ -1,18 +1,19 @@
-form#lorem{
+form#user {
 	border:thick black solid;
 	float: left;
 	width: 40%;
-	background-color: pink;
-	overflow: auto;
-	
+	overflow:auto;
+	background: aqua;
 }
-
-form#user {
+form#lorem{
 	border:thick black solid;
 	float: right;
 	width: 40%;
-	overflow:auto;
-	background: aqua;
+	background-color: pink;
+	overflow: auto;	
+}
+
+
 }
 body#tools{
 	overflow: auto;
@@ -41,7 +42,8 @@ box-shadow: 4px -4px 121px 0px rgba(0,0,0,0.81);
 }
 
 .highlight{
+	color:black;
 	border:thin black solid;
-	background-color: tan;
+	background-color: #EFD469;
 	width:100%;
 }
