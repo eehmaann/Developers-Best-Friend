@@ -3,17 +3,14 @@ form#user {
 	float: left;
 	width: 40%;
 	overflow:auto;
-	background: aqua;
+	background: #C6E2FF;
 }
 form#lorem{
 	border:thick black solid;
 	float: right;
 	width: 40%;
-	background-color: pink;
+	background-color: #FFE4E1;
 	overflow: auto;	
-}
-
-
 }
 body#tools{
 	overflow: auto;

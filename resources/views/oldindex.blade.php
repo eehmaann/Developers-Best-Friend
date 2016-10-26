@@ -2,7 +2,7 @@
 @section('title')
 @endsection
 @section('content')
-<body id="tools">
+<main id="tools">
 	<h2> Tools to help with testing.</h2>
 	@if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -19,7 +19,7 @@
         {{ csrf_field() }}
         <label> Random User Generator</label>
         <p><input type='number' name='peopleNumber' min="1", max="20">
-        <label for='number'> How many users?</label></p>
+        <label for='peoplenumber'> How many users?</label></p>
         <p> <input type="checkbox" name="address" value="yes"> <label for="address">Check to include address </label></p>
         <p> <input type="checkbox" name="phone" value="yes"> <label for="phone">Check to include phone number </label></p>
         <p> <input type="checkbox" name="position" value="yes"> <label for="position">Check to include job title </label></p>
@@ -38,6 +38,6 @@
    	 	<input type='submit' value='Give me Content!'>
 	</form>
 
-
+</main>
 
 @endsection

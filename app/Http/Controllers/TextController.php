@@ -24,7 +24,7 @@ class TextController extends Controller
     public function lorem(Request $request)
     {
     	$this->validate($request, [
-        'paragraphsNumber' => 'required|min:1|max:100|integer',
+        'paragraphsNumber' => 'required|min:1|max:90|integer',
     ]);
 		$number= $request->input('paragraphsNumber');
 		$generator = new \Badcow\LoremIpsum\Generator();
@@ -42,10 +42,13 @@ class TextController extends Controller
         }
         return view('lorem')->with('lorem', $lorem);
     }
+    
+
+
     public function users(Request $request)
     {
     	$this->validate($request, [
-        'peopleNumber' => 'required|min:1|max:20|integer',
+        'peopleNumber' => 'required|min:1|max:16|integer',
     ]);
 
 // alternatively, use another PSR-0 compliant autoloader (like the Symfony2 ClassLoader for instance)
@@ -86,7 +89,12 @@ class TextController extends Controller
             }
             $email = $first.".".$last."@".$company.".com";
             
-            $person.="<b>EMAIL:</b>  ".$email."\n\n <b>ADDRESS:  </b> \n".$faker->address;
+            $person.="<b>EMAIL:</b>  ".$email;
+            if($address=="yes"){
+                $person.="\n\n <b>ADDRESS:  </b> \n".$faker->address;
+            }
+
+
             if($phone=="yes"){
                 $person.= "\n\n <b> NUMBER:  </b> \n".$faker->phoneNumber;
             }
