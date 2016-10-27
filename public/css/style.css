@@ -21,7 +21,12 @@ input{
 }
 
 form label{
-	font-size: 2rem;
+	font-size: 1.5em;
+}
+form label.title{
+	font-size: 1.75em;
+	font-weight: bold;
+	text-decoration: underline;;
 }
 
 h2{

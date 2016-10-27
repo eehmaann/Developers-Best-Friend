@@ -1,6 +1,4 @@
 @extends('layouts.master')
-@section('title')
-@endsection
 @section('content')
 <main id="tools">
 	<h2> Tools to help with testing.</h2>
@@ -17,7 +15,7 @@
 	
     <form method='POST' action='/users' id="user">
         {{ csrf_field() }}
-        <label> Random User Generator</label>
+        <label class="title"> Random User Generator</label>
         <p><input type='number' name='peopleNumber' min="1" max="20">
         <label><b> How many users?</b></label></p>
         <p> <input type="checkbox" name="address" value="yes"> <label>Check to include address </label></p>
@@ -31,7 +29,7 @@
 	
 	<form method='POST' action='/lorem' id="lorem">
     	{{ csrf_field() }}
-    	<label><b> Lorem Ipsum Generator</b></label>
+    	<label class="title"><b> Lorem Ipsum Generator</b></label>
     	<p><input type='number' name='paragraphsNumber' min="1" max="90">
     	<label>How many paragraphs?</label> </p>
     	<p> <input type="checkbox" name="leaf" value="yes"> <label>Check to use bird leaf? </label></p>
