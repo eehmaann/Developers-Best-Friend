@@ -32,6 +32,7 @@ form{
 	margin: 1em;
 }
 .birdleaf{
+	padding:1em;
 	margin: 2em;
 	-webkit-box-shadow: 4px -4px 121px 0px rgba(0,0,0,0.81);
 -moz-box-shadow: 4px -4px 121px 0px rgba(0,0,0,0.81);

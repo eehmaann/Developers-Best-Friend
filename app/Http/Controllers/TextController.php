@@ -140,6 +140,12 @@ class TextController extends Controller
         if($leaf=="yes"){
             $string="<div class='birdleaf'> <h3>Employees of Bird Leaf</h3>".$string."</div>";
         }
+        if($number=="1"){
+            $string="<h2> Here is the random user you requested.</h2>".$string;
+        }
+        else{
+            $string="<h2> Here are the random users that you requested</h2>".$string;
+        }
     	return view ('users')->with('string', $string);
     }
 
