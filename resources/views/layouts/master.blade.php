@@ -11,7 +11,7 @@
 	</head>
 
 	<body>
-	<h1> Developer's Best Friend</h1>
+	<h1><a href="http://p3.ericehmann.me/"> Developer's Best Friend</a></h1>
 		@yield('content')
 	</body>
 </html>

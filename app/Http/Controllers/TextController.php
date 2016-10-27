@@ -72,13 +72,13 @@ class TextController extends Controller
         for ($i=0; $i < $number; $i++) {
             $first =$faker->firstName($gender = null|'male'|'female');
             $last= $faker ->lastname;
-            $person="<b> NAME: </b> \n ".$first."\n".$last."\n\n";
+            $person="<b> NAME: </b> &nbsp;".$first."&nbsp;".$last."&nbsp;&nbsp;";
             if($leaf=="yes"){
                 $company="Birdleaf";
             }
             else if($position=="yes"){
                 $company =$faker->company;
-                $person.="<b>COMPANY </b> \n\n".$company;
+                $person.="<b>COMPANY </b> &nbsp;&nbsp;".$company;
             }
             else{
                 $company="AOL";
@@ -91,15 +91,15 @@ class TextController extends Controller
             
             $person.="<b>EMAIL:</b>  ".$email;
             if($address=="yes"){
-                $person.="\n\n <b>ADDRESS:  </b> \n".$faker->address;
+                $person.="&nbsp;&nbsp;<b>ADDRESS:  </b> &nbsp;".$faker->address;
             }
 
 
             if($phone=="yes"){
-                $person.= "\n\n <b> NUMBER:  </b> \n".$faker->phoneNumber;
+                $person.= "&nbsp;&nbsp; <b> NUMBER:  </b> &nbsp;".$faker->phoneNumber;
             }
             if($position=="yes"){
-              $person.= "\n\n <b>TITLE:  </b> \n".$faker->jobTitle;  
+              $person.= "&nbsp;&nbsp;<b>TITLE:  </b> &nbsp;".$faker->jobTitle;  
             }
             if($age=="yes"){
                 
@@ -124,15 +124,15 @@ class TextController extends Controller
                 else{
                     $year = $faker->numberBetween($min = '1915', $min ='2010'); 
                 }
-                $person.="<b> DATE OF BIRTH: </b>\n\n".$month."-".$day."-".$year;
+                $person.="<b> DATE OF BIRTH: </b>&nbsp;&nbsp;".$month."-".$day."-".$year;
             }
             
             // Changes the format of diasplay so that ever other entry is highlighted.
             if($i%2==0 && $highlight=="yes"){ 
-            $string .="<span class='highlight'>".$person."</span>\r\n <br>";
+            $string .="<span class='highlight'>".$person."</span> <br>";
             }
             else{
-                $string .=$person."\r\n<br>";
+                $string .=$person."<br>";
             }
             //
         }

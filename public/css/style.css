@@ -44,3 +44,7 @@ box-shadow: 4px -4px 121px 0px rgba(0,0,0,0.81);
 	background-color: #EFD469;
 	width:100%;
 }
+a{
+	text-decoration: none;
+	color:inherit;
+}
