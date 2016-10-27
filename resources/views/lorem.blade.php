@@ -2,6 +2,6 @@
 @section('title')
 @endsection
 @section('content')
-<h1>  The Lorem Ipsum text that you requested:</h1>
+<h2>  The Lorem Ipsum text that you requested:</h2>
 {!!$lorem!!}
 @endsection

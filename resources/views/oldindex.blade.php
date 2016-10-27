@@ -13,7 +13,7 @@
         </ul>
     </div>
 @endif
-	<p>  Use form on the right to produce users made from random text, or use the form on the left to produce paragraphs with random text.  </p>
+	<p>  Use the form on the left to produce users made from random text, or use the form on the left to produce paragraphs with random text.  </p>
 	
     <form method='POST' action='/users' id="user">
         {{ csrf_field() }}
