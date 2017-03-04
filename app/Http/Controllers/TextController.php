@@ -6,41 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Faker\Factory as Faker;
 
-// require the Faker autoloader
-// Find where the autoloader is
-// require_once '/vendor/fzaninotto/faker/src/autoload.php';
 
 class TextController extends Controller
 {
 
-    /**
-    * Responds to requests to GET /books
-    */
     public function one()
     {
-        return view('oldindex');
-    }
-    
-    public function lorem(Request $request)
-    {
-    	$this->validate($request, [
-        'paragraphsNumber' => 'required|min:1|max:90|integer',
-    ]);
-		$number= $request->input('paragraphsNumber');
-		$generator = new \Badcow\LoremIpsum\Generator();
-		$paragraphs = $generator->getParagraphs($number);
-		//echo implode('<p>', $paragraphs);
-        $lorem="";
-         $leaf = $request->input('leaf');
-        if($leaf=="yes"){
-            $lorem="<div class='birdleaf'>";
-    	   $lorem.=implode('<br> BIRD LEAF ', $paragraphs);
-            $lorem.="</div>";
-        }
-        else{            
-            $lorem.=implode('<br>', $paragraphs);
-        }
-        return view('lorem')->with('lorem', $lorem);
+        return view('index');
     }
     
 
@@ -51,13 +23,6 @@ class TextController extends Controller
         'peopleNumber' => 'required|min:1|max:16|integer',
     ]);
 
-// alternatively, use another PSR-0 compliant autoloader (like the Symfony2 ClassLoader for instance)
-
-// use the factory to create a Faker\Generator instance
-
-
-// generate data by accessing properties
-//echo $faker->name;
     	$number=$request->input('peopleNumber');
         
     	$faker = Faker::create();
@@ -101,15 +66,13 @@ class TextController extends Controller
             if($position=="yes"){
               $person.= "&nbsp;&nbsp;<b>TITLE:  </b> &nbsp;".$faker->jobTitle;  
             }
-            if($age=="yes"){
-                
-                   // $birthdate=$faker->date($format = 'y-m-d', $min = '-80 years', $max ='-18 years'); 
+            if($age=="yes") {
                 $month =$faker->numberBetween($min = '1', $min ='12'); 
                 // Get the day user was born
                 if($month=="4" || $month=="6" ||$month=="9" ||$month=="11"){
                     $day = $faker->numberBetween($min = '1', $min ='30');
                 } 
-                else if($month="2"){
+                else if($month="2") {
                     $day = $faker->numberBetween($min = '1', $min ='28');
                 }
                 else {
@@ -117,7 +80,7 @@ class TextController extends Controller
                 }
                 
                 // Get the year user was born, must be legal age to work
-                if($leaf=="yes" || $position=="yes"){
+                if($leaf=="yes" || $position=="yes") {
                     $year = $faker->numberBetween($min = '1936', $min ='1998'); 
                 }
                 // user can be between 6 and 101
@@ -128,22 +91,22 @@ class TextController extends Controller
             }
             
             // Changes the format of diasplay so that ever other entry is highlighted.
-            if($i%2==0 && $highlight=="yes"){ 
+            if($i%2==0 && $highlight=="yes") { 
             $string .="<span class='highlight'>".$person."</span> <br>";
             }
-            else{
+            else {
                 $string .=$person."<br>";
             }
             //
         }
         // leaf will add a visual cue to show to be identifiably different, beyond just text
-        if($leaf=="yes"){
+        if($leaf=="yes") {
             $string="<div class='birdleaf'> <h3>Employees of Bird Leaf</h3>".$string."</div>";
         }
-        if($number=="1"){
+        if($number=="1") {
             $string="<h2> Here is the random user you requested.</h2>".$string;
         }
-        else{
+        else {
             $string="<h2> Here are the random users that you requested</h2>".$string;
         }
     	return view ('users')->with('string', $string);
